@@ -1,0 +1,68 @@
+@use "../../styles/constants" as *;
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 5rem auto;
+  column-gap: 1.5rem;
+  row-gap: 0.5rem;
+  align-items: center;
+}
+
+.avatar {
+  @extend %text-xl;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5rem;
+  grid-row: span 2;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background-color: var(--color-blue-light-100);
+}
+
+.name {
+  @extend %h3;
+  color: var(--color-charcoal-100);
+}
+
+.linksList {
+  list-style: none;
+  display: flex;
+  gap: 0.5rem;
+  margin-left: -0.25rem;
+}
+
+.link {
+  @extend %text-3;
+  @extend %transition;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 0.25rem;
+  padding: 0.25rem;
+  color: var(--color-purple-100);
+
+  &::before {
+    content: "";
+    width: 1rem;
+    aspect-ratio: 1 / 1;
+    background: url(../../assets/icos/foledrIco.svg) no-repeat center center;
+  }
+
+  &::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: var(--color-purple-100);
+    transform: scale(0);
+    transition: transform 0.2s;
+  }
+
+  @media (hover: hover) {
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
+}
