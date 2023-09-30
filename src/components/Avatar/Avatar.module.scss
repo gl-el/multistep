@@ -2,9 +2,9 @@
 
 .wrapper {
   display: grid;
-  grid-template-columns: 5rem auto;
-  column-gap: 1.5rem;
-  row-gap: 0.5rem;
+  grid-template-columns: 80px auto;
+  column-gap: 24px;
+  row-gap: 8px;
   align-items: center;
 }
 
@@ -13,7 +13,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 5rem;
+  width: 80px;
   grid-row: span 2;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
@@ -28,8 +28,8 @@
 .linksList {
   list-style: none;
   display: flex;
-  gap: 0.5rem;
-  margin-left: -0.25rem;
+  gap: 8px;
+  margin-left: -4px;
 }
 
 .link {
@@ -39,13 +39,13 @@
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-  column-gap: 0.25rem;
-  padding: 0.25rem;
+  column-gap: 4px;
+  padding: 4px;
   color: var(--color-purple-100);
 
   &::before {
     content: "";
-    width: 1rem;
+    width: 16px;
     aspect-ratio: 1 / 1;
     background: url(../../assets/icos/foledrIco.svg) no-repeat center center;
   }

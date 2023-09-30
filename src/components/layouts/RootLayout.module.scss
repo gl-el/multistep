@@ -1,0 +1,9 @@
+@use "../../styles/constants";
+
+.main {
+  margin: 24px auto;
+  max-width: 900px;
+  min-height: 704px;
+  border-radius: 12px;
+  background-color: var(--color-grey-white-100);
+}

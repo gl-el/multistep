@@ -2,7 +2,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'IBM Plex Sans', sans-serif;;
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+body {
+  background-color: var(--color-white-100);
 }
 
 button {
@@ -14,4 +18,22 @@ button {
 a {
   text-decoration: none;
   cursor: pointer;
+}
+
+:root {
+  --color-white-100: hsla(0, 0%, 96%, 1);
+  --color-grey-white-100: hsla(0, 0%, 100%, 1);
+  --color-blue-grey-100: hsla(212, 19%, 16%, 1);
+  --color-blue-light-100: hsla(214, 68%, 90%, 1);
+  --color-violet-100: rgb(204, 87, 250);
+  --color-purple-100: hsla(239, 94%, 66%, 1);
+  --color-purple-light-100: hsla(239, 100%, 74%, 1);
+  --color-purple-light-xl-100: hsla(238, 100%, 93%, 1);
+  --color-purple-light-l-100: hsla(238, 100%, 89%);
+  --color-purple-dark-100: hsla(239, 51%, 50%, 1);
+  --color-purple-pale-100: rgb(107, 107, 139);
+  --color-charcoal-100: hsla(0, 0%, 20%, 1);
+  --color-black-48: hsla(0, 0%, 0%, 0.48);
+  --color-black-16: hsla(0, 0%, 0%, 0.16);
+  --color-black-4: hsla(0, 0%, 0%, 0.04);
 }
