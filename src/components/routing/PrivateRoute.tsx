@@ -6,7 +6,7 @@ import { RootState } from "@/store/store";
 export function PrivateRoute({ children }: { children: JSX.Element }) {
   const navigate = useNavigate();
   const step = useSelector((state: RootState) => state.form.step);
-  console.log(step);
+
   useEffect(() => {
     if (step) {
       navigate("/create", { replace: true });
