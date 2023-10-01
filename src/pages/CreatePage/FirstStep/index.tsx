@@ -2,10 +2,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "@store/store";
+import { AppDispatch, RootState } from "@/store/store";
 import { useNavigate } from "react-router-dom";
-import { Button } from "@components/Button";
-import { TextInput } from "@components/forms";
+import { Button } from "@/components/Button";
+import { TextInput } from "@/components/forms";
 import s from "./FirstStep.module.scss";
 import { Gender } from "@/types";
 

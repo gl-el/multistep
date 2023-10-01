@@ -3,13 +3,13 @@ import * as yup from "yup";
 import isEmail from "validator/lib/isEmail";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "@store/store";
+import { AppDispatch, RootState } from "@/store/store";
 import { incrementStep, setEmail, setPhone } from "@/store/form.slice";
 import { useNavigate } from "react-router-dom";
-import { Avatar } from "@components/Avatar";
-import { Divider } from "@components/Divider";
-import { Button } from "@components/Button";
-import { TextInput } from "@components/forms";
+import { Avatar } from "@/components/Avatar";
+import { Divider } from "@/components/Divider";
+import { Button } from "@/components/Button";
+import { TextInput } from "@/components/forms";
 import s from "./MainPage.module.scss";
 
 const schema = yup.object().shape({

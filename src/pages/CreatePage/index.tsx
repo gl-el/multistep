@@ -1,6 +1,6 @@
-import { Stepper } from "@components/Stepper";
+import { Stepper } from "@/components/Stepper";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "@store/store";
+import { AppDispatch, RootState } from "@/store/store";
 import { FirstStep } from "./FirstStep";
 import s from "./CreatePage.module.scss";
 
