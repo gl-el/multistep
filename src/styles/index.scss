@@ -23,6 +23,7 @@ a {
 :root {
   --color-white-100: hsla(0, 0%, 96%, 1);
   --color-grey-white-100: hsla(0, 0%, 100%, 1);
+  --color-grey-100: hsla(0, 0%, 65%, 1);
   --color-blue-grey-100: hsla(212, 19%, 16%, 1);
   --color-blue-light-100: hsla(214, 68%, 90%, 1);
   --color-violet-100: rgb(204, 87, 250);
@@ -35,5 +36,6 @@ a {
   --color-charcoal-100: hsla(0, 0%, 20%, 1);
   --color-black-48: hsla(0, 0%, 0%, 0.48);
   --color-black-16: hsla(0, 0%, 0%, 0.16);
+  --color-black-8: hsla(0, 0%, 0%, 0.08);
   --color-black-4: hsla(0, 0%, 0%, 0.04);
 }

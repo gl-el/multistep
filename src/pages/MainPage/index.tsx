@@ -1,15 +1,15 @@
-import Divider from "@mui/material/Divider";
-import { Avatar } from "@/components/Avatar";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import isEmail from "validator/lib/isEmail";
 import { useForm } from "react-hook-form";
-import { Button } from "@/components/Button";
-import { TextInput } from "@/components/forms";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "@store";
+import { AppDispatch, RootState } from "@store/store";
 import { incrementStep, setEmail, setPhone } from "@/store/form.slice";
 import { useNavigate } from "react-router-dom";
+import { Avatar } from "@components/Avatar";
+import { Divider } from "@components/Divider";
+import { Button } from "@components/Button";
+import { TextInput } from "@components/forms";
 import s from "./MainPage.module.scss";
 
 const schema = yup.object().shape({
@@ -24,10 +24,15 @@ const schema = yup.object().shape({
     }),
   phone: yup
     .string()
-    .min(11, "Введите номер телефона")
+    .min(10, "Введите номер телефона")
     .matches(/\d/g)
     .required("Введите номер телефона"),
 });
+
+interface SubmitData {
+  email: string;
+  phone: string;
+}
 
 export function MainPage() {
   const dispatch = useDispatch<AppDispatch>();
@@ -40,7 +45,7 @@ export function MainPage() {
   } = useForm({
     resolver: yupResolver(schema),
   });
-  const onSubmitHandler = (data) => {
+  const onSubmitHandler = (data: SubmitData) => {
     dispatch(setEmail(data.email));
     dispatch(setPhone(data.phone));
     dispatch(incrementStep());
@@ -49,7 +54,7 @@ export function MainPage() {
   return (
     <div className={s.wrapper}>
       <Avatar />
-      <Divider classes={s.divider} />
+      <Divider className={s.divider} />
       <form onSubmit={handleSubmit(onSubmitHandler)} className={s.form}>
         <TextInput
           label={"Номер телефона"}
