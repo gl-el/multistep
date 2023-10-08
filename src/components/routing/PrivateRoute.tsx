@@ -1,7 +1,7 @@
-import { useEffect } from "react";
-import { useNavigate, Navigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { RootState } from "@/store/store";
+import { useEffect } from 'react';
+import { useNavigate, Navigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/store/store';
 
 export function PrivateRoute({ children }: { children: JSX.Element }) {
   const navigate = useNavigate();
@@ -9,12 +9,12 @@ export function PrivateRoute({ children }: { children: JSX.Element }) {
 
   useEffect(() => {
     if (step) {
-      navigate("/create", { replace: true });
+      navigate('/create', { replace: true });
     }
   }, [step, navigate]);
 
   if (!step) {
-    return <Navigate to="/" replace />;
+    return <Navigate to='/' replace />;
   }
 
   return children;

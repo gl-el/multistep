@@ -1,4 +1,4 @@
-import s from "./Avatar.module.scss";
+import s from './Avatar.module.scss';
 
 export function Avatar() {
   return (
@@ -7,17 +7,17 @@ export function Avatar() {
       <h3 className={s.name}>Иван Иванов</h3>
       <ul className={s.linksList}>
         <li className={s.linkItem}>
-          <a href="#" target="_blank" className={s.link}>
+          <a href='#' target='_blank' className={s.link}>
             Telegram
           </a>
         </li>
         <li className={s.linkItem}>
-          <a href="#" target="_blank" className={s.link}>
+          <a href='#' target='_blank' className={s.link}>
             Github
           </a>
         </li>
         <li className={s.linkItem}>
-          <a href="#" target="_blank" className={s.link} rel="noreferrer">
+          <a href='#' target='_blank' className={s.link} rel='noreferrer'>
             Resume
           </a>
         </li>

@@ -1,5 +1,5 @@
-import { Outlet } from "react-router-dom";
-import s from "./RootLayout.module.scss";
+import { Outlet } from 'react-router-dom';
+import s from './RootLayout.module.scss';
 
 export function RootLayout() {
   return (

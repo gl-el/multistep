@@ -1,4 +1,4 @@
-export enum Gender {
-  MAN = "man",
-  WOMAN = "woman",
-}
+export const Gender = {
+  man: 'MAN',
+  woman: 'WOMAN',
+} as const;
