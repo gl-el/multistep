@@ -9,11 +9,12 @@
 .label {
   display: flex;
   flex-direction: column;
+  max-width: 400px;
 }
 
 .form {
   &>label {
-    margin-bottom: 9px;
+    margin: 24px 0 9px
   }
 
   &>button {
