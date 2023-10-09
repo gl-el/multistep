@@ -1,15 +1,7 @@
-.wrapper {
-  padding: 24px;
-
-  &>hr {
-    margin: 24px 0;
-  }
-}
-
 .label {
   display: flex;
   flex-direction: column;
-  max-width: 400px;
+  max-width: 300px;
 }
 
 .form {

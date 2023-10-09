@@ -1,13 +1,29 @@
+import { Button, Step, StepLabel, Stepper } from '@mui/material';
+import { AppDispatch, RootState } from '@/store/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { decrementStep, resetStep } from '@/store/form.slice';
+import { useNavigate } from 'react-router';
+import { FirstForm, SecondForm } from './FormSteps';
+
 import s from './CreatePage.module.scss';
-import { Step, StepLabel, Stepper } from '@mui/material';
-import { RootState } from '@/store/store';
-import { useSelector } from 'react-redux';
 
 const MAX_STEPS = 3;
+const steps = Array.from({ length: MAX_STEPS }, (_, index) => index + 1);
 
 export function CreatePage() {
   const { step } = useSelector((state: RootState) => state.form);
-  const steps = Array.from({ length: MAX_STEPS }, (_, index) => index + 1);
+  const navigate = useNavigate();
+  const dispatch = useDispatch<AppDispatch>();
+
+  const handleBack = () => {
+    if (step) {
+      dispatch(decrementStep());
+    } else {
+      dispatch(resetStep());
+      navigate('/');
+    }
+  };
+
   return (
     <div className={s.wrapper}>
       <Stepper activeStep={step - 1} alternativeLabel>
@@ -17,6 +33,16 @@ export function CreatePage() {
           </Step>
         ))}
       </Stepper>
+      {step === 1 && <FirstForm id={`form-step-${step}`} />}
+      {step === 2 && <SecondForm />}
+      <div className={s.btnWrapper}>
+        <Button variant={'outlined'} onClick={handleBack}>
+          Back
+        </Button>
+        <Button variant={'contained'} type={'submit'} form={`form-step-${step}`}>
+          Next
+        </Button>
+      </div>
     </div>
   );
 }

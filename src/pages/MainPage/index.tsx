@@ -25,11 +25,11 @@ export function MainPage() {
       <form className={s.form} onSubmit={methods.handleSubmit(onSubmit)}>
         <label className={s.label}>
           Phone number
-          <MaskedInput name={'phone'} />
+          <MaskedInput name={'phone'} id={'user-phone'} />
         </label>
         <label className={s.label}>
           Email
-          <TextInput name={'email'} />
+          <TextInput name={'email'} id={'user-email'} />
         </label>
         <Button variant={'outlined'} type={'submit'}>
           Start

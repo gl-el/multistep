@@ -3,11 +3,6 @@ import { TextField } from '@mui/material';
 import { useFormContext, Controller } from 'react-hook-form';
 import React from 'react';
 
-/* interface MaskedInputProps {
-  inputRef: (ref: HTMLInputElement) => void;
-  props: TextFieldProps & IMaskInputProps<MaskElement>;
-}
- */
 interface CustomProps {
   onChange: (event: { target: { name: string; value: string } }) => void;
   name: string;
@@ -29,11 +24,7 @@ const TextMaskCustom = React.forwardRef<HTMLInputElement, CustomProps>(function 
   );
 });
 
-/* const MaskedTextField = IMaskMixin(({ inputRef, ...props }: MaskedInputProps) => (
-  <TextField {...props} inputRef={inputRef} />
-)); */
-
-export function MaskedInput({ name }: { name: string }) {
+export function MaskedInput({ name, id }: { name: string; id: string }) {
   const methods = useFormContext();
 
   return (
@@ -42,6 +33,7 @@ export function MaskedInput({ name }: { name: string }) {
       control={methods.control}
       render={({ field: { value, onChange } }) => (
         <TextField
+          id={id}
           value={value}
           error={!!methods.formState.errors[name]}
           helperText={methods.formState.errors[name]?.message?.toString()}
