@@ -18,12 +18,15 @@ export const formSlice = createSlice({
     decrementStep: (state) => {
       state.step -= 1;
     },
+    setStep: (state, action) => {
+      state.step = action.payload;
+    },
     resetStep: (state) => {
       state.step = 0;
     },
   },
 });
 
-export const { incrementStep, decrementStep, resetStep } = formSlice.actions;
+export const { incrementStep, decrementStep, resetStep, setStep } = formSlice.actions;
 
 export default formSlice.reducer;

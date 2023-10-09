@@ -1,15 +1,37 @@
-import { IMaskInputProps, IMaskMixin } from 'react-imask';
+import { IMaskInput } from 'react-imask';
 import { TextField } from '@mui/material';
 import { useFormContext, Controller } from 'react-hook-form';
+import React from 'react';
 
-interface MaskedStyledInputProps {
+/* interface MaskedInputProps {
   inputRef: (ref: HTMLInputElement) => void;
-  props: TextFieldProps & IMaskInputProps;
+  props: TextFieldProps & IMaskInputProps<MaskElement>;
+}
+ */
+interface CustomProps {
+  onChange: (event: { target: { name: string; value: string } }) => void;
+  name: string;
 }
 
-const MaskedTextField = IMaskMixin(({ inputRef, ...props }: MaskedStyledInputProps) => (
+const TextMaskCustom = React.forwardRef<HTMLInputElement, CustomProps>(function TextMaskCustom(props, ref) {
+  const { onChange, ...other } = props;
+  return (
+    <IMaskInput
+      {...other}
+      mask='+{7} (#00) 000-00-00'
+      definitions={{
+        '#': /[1-9]/,
+      }}
+      inputRef={ref}
+      onAccept={(value: string) => onChange({ target: { name: props.name, value } })}
+      overwrite
+    />
+  );
+});
+
+/* const MaskedTextField = IMaskMixin(({ inputRef, ...props }: MaskedInputProps) => (
   <TextField {...props} inputRef={inputRef} />
-));
+)); */
 
 export function MaskedInput({ name }: { name: string }) {
   const methods = useFormContext();
@@ -19,15 +41,14 @@ export function MaskedInput({ name }: { name: string }) {
       name={name}
       control={methods.control}
       render={({ field: { value, onChange } }) => (
-        <MaskedTextField
-          mask='+{7} (#00) 000-00-00'
-          definitions={{
-            '#': /[9]/,
-          }}
+        <TextField
           value={value}
           error={!!methods.formState.errors[name]}
           helperText={methods.formState.errors[name]?.message?.toString()}
           onChange={onChange}
+          InputProps={{
+            inputComponent: TextMaskCustom as never,
+          }}
         />
       )}
     />

@@ -3,11 +3,20 @@ import { MaskedInput, TextInput } from '@/components/Form';
 import s from './MainPage.module.scss';
 import { Divider, Button } from '@mui/material';
 import { useFormContext } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '@/store/store';
+import { setStep } from '@/store/form.slice';
+import { useNavigate } from 'react-router-dom';
 
 export function MainPage() {
+  const navigate = useNavigate();
   const methods = useFormContext();
+  const dispatch = useDispatch<AppDispatch>();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = () => {
+    dispatch(setStep(1));
+    navigate('/create');
+  };
 
   return (
     <div className={s.wrapper}>
