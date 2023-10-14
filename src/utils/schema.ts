@@ -36,4 +36,10 @@ export const schema = [
       .matches(/^[a-zA-Zа-яА-Я]+$/, 'Only letters'),
     sex: yup.string().default('').required('Select your gender'),
   }),
+  yup.object({
+    advantages: yup
+      .array(yup.string().required('Enter your advantage'))
+      .required('Must have fields')
+      .min(1, 'Minimum 1 field'),
+  }),
 ];

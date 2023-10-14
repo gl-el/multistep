@@ -11,3 +11,7 @@ export interface FormCreateFirst {
   surname: string;
   sex: string;
 }
+
+export interface FormCreateSecond {
+  advantages: string[];
+}

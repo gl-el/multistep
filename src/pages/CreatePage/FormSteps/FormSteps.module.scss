@@ -5,7 +5,9 @@
 }
 
 .form {
-  &>label {
+
+  &>label,
+  .advantages {
     margin: 24px 0;
 
     &>* {
@@ -16,4 +18,14 @@
   &>button {
     margin-top: 47px;
   }
+}
+
+.advantagesList {
+  list-style: none;
+}
+
+.advantage {
+  display: flex;
+  align-items: center;
+  margin-top: 24px;
 }
