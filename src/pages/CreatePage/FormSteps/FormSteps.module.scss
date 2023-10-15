@@ -8,7 +8,7 @@
 
   &>label,
   .advantages {
-    margin: 24px 0;
+    margin: 4px 0;
 
     &>* {
       margin: 8px 0;
@@ -26,6 +26,24 @@
 
 .advantage {
   display: flex;
-  align-items: center;
-  margin-top: 24px;
+  align-items: flex-start;
+  gap: 6px;
+  margin-top: 4px;
+
+  >.btnDel {
+    box-sizing: border-box;
+    max-width: 30px;
+    min-width: 30px;
+    aspect-ratio: 1 / 1;
+    margin-top: 10px;
+  }
+}
+
+.advantages {
+  
+  >.btnAdd {
+    max-width: 44px;
+    min-width: 44px;
+    aspect-ratio: 1 / 1;
+  }
 }

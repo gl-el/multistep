@@ -45,7 +45,9 @@ export function CreatePage() {
           variant={'contained'}
           type={'submit'}
           form={`form-step-${step}`}
-          onClick={() => console.log(methods.getValues())}
+          onClick={() => {
+            console.log(methods.formState);
+          }}
         >
           Next
         </Button>

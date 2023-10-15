@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { AppDispatch } from '@/store/store';
 import { incrementStep } from '@/store/form.slice';
 import IcoDelete from '@/assets/icos/delete.svg?react';
+import IcoAdd from '@/assets/icos/add.svg?react';
 import s from './FormSteps.module.scss';
 
 export function SecondForm({ id }: { id: string }) {
@@ -26,21 +27,23 @@ export function SecondForm({ id }: { id: string }) {
       <div className={s.advantages}>
         Advantages
         <ul className={s.advantagesList}>
-          {fields.map((item, index) => (
-            <li key={item.id} className={s.advantage}>
+          {fields.map((field, index) => (
+            <li key={field.id} className={s.advantage}>
               <TextInput
-                name={`advantages.${index}.advantage`}
+                name={`advantages[${index}].advantage`}
                 id={`field-advantages-${index}`}
                 placeholder={'Enter advantage'}
               />
-              <Button onClick={() => remove(index)}>
+              <Button className={s.btnDel} onClick={() => remove(index)}>
                 <IcoDelete />
               </Button>
             </li>
           ))}
         </ul>
-        <div>{methods.formState.errors?.advantages?.message?.toString()}</div>
-        <Button onClick={() => append({ advantage: '' })}>+</Button>
+        {methods.formState.errors.advantages && <div>{methods.formState.errors.advantages?.message?.toString()}</div>}
+        <Button className={s.btnAdd} onClick={() => append({ advantage: '' })} variant={'outlined'}>
+          <IcoAdd />
+        </Button>
       </div>
     </form>
   );

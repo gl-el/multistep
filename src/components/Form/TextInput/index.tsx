@@ -12,11 +12,11 @@ export function TextInput({ name, ...props }: TextInputProps) {
     <Controller
       name={name || ''}
       control={methods.control}
-      render={({ field: { value, onChange } }) => (
+      render={({ field: { value, onChange }, fieldState: { error } }) => (
         <TextField
           value={value || ''}
-          error={!!methods.formState.errors[name || '']}
-          helperText={methods.formState.errors[name || '']?.message?.toString()}
+          error={!!error?.message || false}
+          helperText={error?.message || ' '}
           onChange={onChange}
           {...props}
         />

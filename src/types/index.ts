@@ -12,6 +12,8 @@ export interface FormCreateFirst {
   sex: string;
 }
 
+export type Advantage = { advantage: string };
+
 export interface FormCreateSecond {
-  advantages: string[];
+  advantages: Advantage[];
 }

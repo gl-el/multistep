@@ -1,6 +1,10 @@
 import * as yup from 'yup';
 import isEmail from 'validator/lib/isEmail';
 
+const advantageSchema = yup.object().shape({
+  advantage: yup.string().required('Enter your advantage'),
+});
+
 export const schema = [
   yup.object().shape({
     phone: yup.string().default('').min(18, 'Enter phone number').required('Enter phone number'),
@@ -37,9 +41,6 @@ export const schema = [
     sex: yup.string().default('').required('Select your gender'),
   }),
   yup.object({
-    advantages: yup
-      .array(yup.string().required('Enter your advantage'))
-      .required('Must have fields')
-      .min(1, 'Minimum 1 field'),
+    advantages: yup.array().of(advantageSchema).required('Must have fields').min(1, 'Minimum 1 field'),
   }),
 ];
