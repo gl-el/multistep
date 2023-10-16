@@ -46,7 +46,7 @@ export function CreatePage() {
           type={'submit'}
           form={`form-step-${step}`}
           onClick={() => {
-            console.log(methods.formState);
+            console.log(methods.getValues());
           }}
         >
           Next

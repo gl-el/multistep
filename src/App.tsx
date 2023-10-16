@@ -17,6 +17,7 @@ export function App() {
     surname: '',
     sex: '',
     advantages: [{ advantage: '' }, { advantage: '' }, { advantage: '' }],
+    checkbox: [],
   };
   const methods = useForm({
     resolver: yupResolver<FormMain | FormCreateFirst | FormCreateSecond>(schema[step]),

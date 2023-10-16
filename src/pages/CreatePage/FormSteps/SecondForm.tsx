@@ -1,5 +1,5 @@
 import { useFormContext, useFieldArray } from 'react-hook-form';
-import { TextInput } from '@/components/Form';
+import { Checkboxes, TextInput } from '@/components/Form';
 import { Button } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '@/store/store';
@@ -44,6 +44,10 @@ export function SecondForm({ id }: { id: string }) {
         <Button className={s.btnAdd} onClick={() => append({ advantage: '' })} variant={'outlined'}>
           <IcoAdd />
         </Button>
+      </div>
+      <div>
+        Checkbox group
+        <Checkboxes name='checkbox' options={[0, 1, 2]} />
       </div>
     </form>
   );
