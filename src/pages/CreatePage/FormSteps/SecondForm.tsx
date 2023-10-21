@@ -1,6 +1,6 @@
-import { useFormContext, useFieldArray } from 'react-hook-form';
-import { Checkboxes, TextInput } from '@/components/Form';
-import { Button } from '@mui/material';
+import { useFormContext, useFieldArray, Controller } from 'react-hook-form';
+import { TextInput } from '@/components/Form';
+import { Button, Checkbox, FormControlLabel, FormHelperText } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '@/store/store';
 import { incrementStep } from '@/store/form.slice';
@@ -45,9 +45,35 @@ export function SecondForm({ id }: { id: string }) {
           <IcoAdd />
         </Button>
       </div>
-      <div>
+      <div className={s.label}>
         Checkbox group
-        <Checkboxes name='checkbox' options={[0, 1, 2]} />
+        {Array.from({ length: 3 }, (_, i) => i + 1).map((option, index) => (
+          <Controller
+            key={index}
+            name='checkbox'
+            control={methods.control}
+            render={({ field }) => (
+              <FormControlLabel
+                {...field}
+                label={option}
+                control={
+                  <Checkbox
+                    id={`field-chekbox-group-option-${index + 1}`}
+                    onChange={() => {
+                      if (!field.value.includes(option)) {
+                        field.onChange([...field.value, option]);
+                        return;
+                      }
+                      const newOption = field.value.filter((item: unknown) => item !== option);
+                      field.onChange(newOption);
+                    }}
+                  />
+                }
+              />
+            )}
+          />
+        ))}
+        <FormHelperText>{methods.formState.errors.checkbox?.message?.toString()}</FormHelperText>
       </div>
     </form>
   );
