@@ -1,7 +1,7 @@
 import { Avatar } from '@/components/Avatar';
 import { MaskedInput, TextInput } from '@/components/Form';
 import s from './MainPage.module.scss';
-import { Divider, Button } from '@mui/material';
+import { Divider, Button, Grid } from '@mui/material';
 import { useFormContext } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '@/store/store';
@@ -23,17 +23,25 @@ export function MainPage() {
       <Avatar />
       <Divider />
       <form className={s.form} onSubmit={methods.handleSubmit(onSubmit)}>
-        <label className={s.label}>
-          Phone number
-          <MaskedInput name={'phone'} id={'user-phone'} />
-        </label>
-        <label className={s.label}>
-          Email
-          <TextInput name={'email'} id={'user-email'} />
-        </label>
-        <Button variant={'outlined'} type={'submit'}>
-          Start
-        </Button>
+        <Grid container spacing={3} direction={'column'}>
+          <Grid container item direction={'column'} md={6} xs={12}>
+            <label htmlFor='user-phone' className={s.label}>
+              Phone number
+            </label>
+            <MaskedInput style={{ maxWidth: 400 }} name={'phone'} id={'user-phone'} margin={'dense'} />
+          </Grid>
+          <Grid container item direction={'column'} md={6} xs={12}>
+            <label className={s.label} htmlFor='user-email'>
+              Email
+            </label>
+            <TextInput style={{ maxWidth: 400 }} name={'email'} id={'user-email'} margin={'dense'} />
+          </Grid>
+          <Grid item xs={12}>
+            <Button variant={'outlined'} type={'submit'}>
+              Start
+            </Button>
+          </Grid>
+        </Grid>
       </form>
     </div>
   );

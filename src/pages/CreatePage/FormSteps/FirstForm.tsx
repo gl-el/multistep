@@ -19,19 +19,19 @@ export function FirstForm({ id }: { id: string }) {
     <form className={s.form} onSubmit={methods.handleSubmit(onSubmit)} id={id}>
       <label className={s.label}>
         NickName
-        <TextInput name={'nickname'} id={'user-nickname'} placeholder={'Enter nickname'} />
+        <TextInput name={'nickname'} id={'user-nickname'} placeholder={'Enter nickname'} margin={'dense'} />
       </label>
       <label className={s.label}>
         Name
-        <TextInput name={'name'} id={'user-name'} placeholder={'Enter name'} />
+        <TextInput name={'name'} id={'user-name'} placeholder={'Enter name'} margin={'dense'} />
       </label>
       <label className={s.label}>
         Surname
-        <TextInput name={'surname'} id={'user-surname'} placeholder={'Enter surname'} />
+        <TextInput name={'surname'} id={'user-surname'} placeholder={'Enter surname'} margin={'dense'} />
       </label>
       <label className={s.label}>
         Sex
-        <TextInput name={'sex'} id={'field-sex'} select>
+        <TextInput name={'sex'} id={'field-sex'} margin={'dense'} select>
           {GENDERS.map((item, i) => (
             <MenuItem key={i} value={item} id={`field-sex-option-${item}`}>
               {`${item[0].toUpperCase()}${item.substring(1)}`}

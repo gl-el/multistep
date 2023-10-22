@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '@/store/store';
 import { schema } from '@/utils/schema';
 import { AppRouter } from '@/components/routing';
-import { FormMain, FormCreateFirst, FormCreateSecond } from './types';
+import { FormMain, FormCreateFirst, FormCreateSecond, FormCreateThird } from './types';
 
 export function App() {
   const { step } = useSelector((state: RootState) => state.form);
@@ -18,9 +18,10 @@ export function App() {
     sex: '',
     advantages: [{ advantage: '' }, { advantage: '' }, { advantage: '' }],
     checkbox: [],
+    about: '',
   };
   const methods = useForm({
-    resolver: yupResolver<FormMain | FormCreateFirst | FormCreateSecond>(schema[step]),
+    resolver: yupResolver<FormMain | FormCreateFirst | FormCreateSecond | FormCreateThird>(schema[step]),
     defaultValues: defaultValues,
   });
   return (

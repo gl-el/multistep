@@ -10,20 +10,9 @@
 
 .label {
   @extend %text-2;
-  display: flex;
-  flex-direction: column;
-  max-width: 400px;
 }
 
 .form {
-  &>label {
-    margin: 4px 0;
-
-    &>* {
-      margin: 8px 0;
-    }
-  }
-
   &>button {
     margin-top: 47px;
   }

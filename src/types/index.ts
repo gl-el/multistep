@@ -17,3 +17,7 @@ export type Advantage = { advantage: string };
 export interface FormCreateSecond {
   advantages: Advantage[];
 }
+
+export interface FormCreateThird {
+  about: string;
+}

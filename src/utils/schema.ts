@@ -45,4 +45,7 @@ export const schema = [
     checkbox: yup.array(yup.number()).min(1, 'Minimum one check').required(),
     radio: yup.number().required('Choose any option'),
   }),
+  yup.object({
+    about: yup.string().min(1, 'Enter about text').max(200, '200 symbols max').required('Enter about text'),
+  }),
 ];

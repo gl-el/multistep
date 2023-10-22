@@ -34,6 +34,7 @@ export function SecondForm({ id }: { id: string }) {
                 name={`advantages[${index}].advantage`}
                 id={`field-advantages-${index + 1}`}
                 placeholder={'Enter advantage'}
+                margin={'dense'}
               />
               <Button className={s.btnDel} onClick={() => remove(index)}>
                 <IcoDelete />

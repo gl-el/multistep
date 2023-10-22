@@ -1,5 +1,5 @@
 import { IMaskInput } from 'react-imask';
-import { TextField } from '@mui/material';
+import { TextField, TextFieldProps } from '@mui/material';
 import { useFormContext, Controller } from 'react-hook-form';
 import React from 'react';
 
@@ -24,7 +24,11 @@ const TextMaskCustom = React.forwardRef<HTMLInputElement, CustomProps>(function 
   );
 });
 
-export function MaskedInput({ name, id }: { name: string; id: string }) {
+interface TextMaskedProps extends Omit<TextFieldProps, 'name'> {
+  name: string;
+}
+
+export function MaskedInput({ name, ...props }: TextMaskedProps) {
   const methods = useFormContext();
 
   return (
@@ -33,7 +37,7 @@ export function MaskedInput({ name, id }: { name: string; id: string }) {
       control={methods.control}
       render={({ field: { value, onChange } }) => (
         <TextField
-          id={id}
+          {...props}
           value={value}
           error={!!methods.formState.errors[name]}
           helperText={methods.formState.errors[name]?.message?.toString()}
