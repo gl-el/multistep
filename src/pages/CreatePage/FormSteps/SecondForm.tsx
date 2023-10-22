@@ -1,6 +1,7 @@
+import cx from 'clsx';
 import { useFormContext, useFieldArray, Controller } from 'react-hook-form';
 import { TextInput } from '@/components/Form';
-import { Button, Checkbox, FormControlLabel, FormHelperText } from '@mui/material';
+import { Button, Checkbox, FormControlLabel, FormHelperText, Radio } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '@/store/store';
 import { incrementStep } from '@/store/form.slice';
@@ -31,7 +32,7 @@ export function SecondForm({ id }: { id: string }) {
             <li key={field.id} className={s.advantage}>
               <TextInput
                 name={`advantages[${index}].advantage`}
-                id={`field-advantages-${index}`}
+                id={`field-advantages-${index + 1}`}
                 placeholder={'Enter advantage'}
               />
               <Button className={s.btnDel} onClick={() => remove(index)}>
@@ -45,7 +46,7 @@ export function SecondForm({ id }: { id: string }) {
           <IcoAdd />
         </Button>
       </div>
-      <div className={s.label}>
+      <div className={cx(s.label, s.group)}>
         Checkbox group
         {Array.from({ length: 3 }, (_, i) => i + 1).map((option, index) => (
           <Controller
@@ -58,7 +59,8 @@ export function SecondForm({ id }: { id: string }) {
                 label={option}
                 control={
                   <Checkbox
-                    id={`field-chekbox-group-option-${index + 1}`}
+                    id={`field-checkbox-group-option-${index + 1}`}
+                    checked={field.value.includes(option)}
                     onChange={() => {
                       if (!field.value.includes(option)) {
                         field.onChange([...field.value, option]);
@@ -74,6 +76,32 @@ export function SecondForm({ id }: { id: string }) {
           />
         ))}
         <FormHelperText>{methods.formState.errors.checkbox?.message?.toString()}</FormHelperText>
+      </div>
+      <div className={cx(s.label, s.group)}>
+        Radio group
+        {Array.from({ length: 3 }, (_, i) => i + 1).map((option, index) => (
+          <Controller
+            key={index}
+            name='radio'
+            control={methods.control}
+            render={({ field }) => (
+              <FormControlLabel
+                {...field}
+                label={option}
+                control={
+                  <Radio
+                    id={`field-radio-group-option-${index + 1}`}
+                    checked={field.value === option}
+                    onChange={() => {
+                      field.onChange(option);
+                    }}
+                  />
+                }
+              />
+            )}
+          />
+        ))}
+        <FormHelperText>{methods.formState.errors.radio?.message?.toString()}</FormHelperText>
       </div>
     </form>
   );

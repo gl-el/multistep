@@ -42,6 +42,7 @@ export const schema = [
   }),
   yup.object({
     advantages: yup.array().of(advantageSchema).required('Must have fields').min(1, 'Minimum 1 field'),
-    checkbox: yup.array(yup.number()).min(1, 'Minimum 1 check').required(),
+    checkbox: yup.array(yup.number()).min(1, 'Minimum one check').required(),
+    radio: yup.number().required('Choose any option'),
   }),
 ];
