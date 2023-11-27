@@ -2,14 +2,13 @@ import { useFormContext } from 'react-hook-form';
 import { TextInput } from '@/components/Form';
 import { GENDERS } from '@/types';
 import { MenuItem } from '@mui/material';
-import { useDispatch } from 'react-redux';
-import { AppDispatch } from '@/store/store';
+import { useAppDispatch } from '@/store/hooks';
 import { incrementStep } from '@/store/form.slice';
 import s from './FormSteps.module.scss';
 
 export function FirstForm({ id }: { id: string }) {
   const methods = useFormContext();
-  const dispatch = useDispatch<AppDispatch>();
+  const dispatch = useAppDispatch();
 
   const onSubmit = () => {
     dispatch(incrementStep());

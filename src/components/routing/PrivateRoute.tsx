@@ -1,11 +1,10 @@
 import { useEffect } from 'react';
 import { useNavigate, Navigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { RootState } from '@/store/store';
+import { useAppSelector } from '@/store/hooks';
 
 export function PrivateRoute({ children }: { children: JSX.Element }) {
   const navigate = useNavigate();
-  const step = useSelector((state: RootState) => state.form.step);
+  const step = useAppSelector((state) => state.form.step);
 
   useEffect(() => {
     if (step) {

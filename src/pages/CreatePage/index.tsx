@@ -1,6 +1,5 @@
 import { Button, Step, StepLabel, Stepper } from '@mui/material';
-import { AppDispatch, RootState } from '@/store/store';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { decrementStep, resetStep } from '@/store/form.slice';
 import { useNavigate } from 'react-router';
 import { FirstForm, SecondForm, ThirdForm } from './FormSteps';
@@ -11,9 +10,9 @@ const MAX_STEPS = 3;
 const steps = Array.from({ length: MAX_STEPS }, (_, index) => index + 1);
 
 export function CreatePage() {
-  const { step } = useSelector((state: RootState) => state.form);
+  const { step } = useAppSelector((state) => state.form);
   const navigate = useNavigate();
-  const dispatch = useDispatch<AppDispatch>();
+  const dispatch = useAppDispatch();
 
   const handleBack = () => {
     if (step) {

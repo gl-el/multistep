@@ -2,8 +2,7 @@ import cx from 'clsx';
 import { useFormContext, useFieldArray, Controller } from 'react-hook-form';
 import { TextInput } from '@/components/Form';
 import { Button, Checkbox, FormControlLabel, FormHelperText, Radio } from '@mui/material';
-import { useDispatch } from 'react-redux';
-import { AppDispatch } from '@/store/store';
+import { useAppDispatch } from '@/store/hooks';
 import { incrementStep } from '@/store/form.slice';
 import IcoDelete from '@/assets/icos/delete.svg?react';
 import IcoAdd from '@/assets/icos/add.svg?react';
@@ -11,7 +10,7 @@ import s from './FormSteps.module.scss';
 
 export function SecondForm({ id }: { id: string }) {
   const methods = useFormContext();
-  const dispatch = useDispatch<AppDispatch>();
+  const dispatch = useAppDispatch();
   const control = methods.control;
 
   const { fields, append, remove } = useFieldArray({
