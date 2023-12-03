@@ -7,13 +7,3 @@
     margin: 24px 0;
   }
 }
-
-.label {
-  @extend %text-2;
-}
-
-.form {
-  &>button {
-    margin-top: 47px;
-  }
-}
