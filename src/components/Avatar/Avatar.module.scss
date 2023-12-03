@@ -1,11 +1,9 @@
 @use "../../styles/constants" as *;
 
 .wrapper {
-  display: grid;
-  grid-template-columns: 80px auto;
-  column-gap: 24px;
-  row-gap: 8px;
+  display: flex;
   align-items: center;
+  gap: 24px;
 }
 
 .avatar {
