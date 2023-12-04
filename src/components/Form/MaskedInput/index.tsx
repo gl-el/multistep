@@ -40,7 +40,7 @@ export function MaskedInput({ name, ...props }: TextMaskedProps) {
           {...props}
           value={value}
           error={!!methods.formState.errors[name]}
-          helperText={methods.formState.errors[name]?.message?.toString()}
+          helperText={methods.formState.errors[name]?.message?.toString() || ' '}
           onChange={onChange}
           InputProps={{
             inputComponent: TextMaskCustom as never,
