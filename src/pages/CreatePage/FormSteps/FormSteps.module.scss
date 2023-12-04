@@ -1,14 +1,8 @@
 @use '/src/styles/constants';
 
-.label {
-  display: flex;
-  flex-direction: column;
-  max-width: 300px;
-}
 
 .form {
 
-  &>label,
   .advantages {
     @extend %text-2;
   }
