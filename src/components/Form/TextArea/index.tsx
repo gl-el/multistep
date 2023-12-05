@@ -22,7 +22,6 @@ export function TextArea({ name, rows, max, ...props }: TextAreaProps) {
             rows={rows}
             value={value || ''}
             error={!!error?.message || false}
-            helperText={error?.message || ' '}
             onChange={onChange}
             {...props}
           />

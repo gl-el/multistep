@@ -13,13 +13,7 @@ export function TextInput({ name, ...props }: TextInputProps) {
       name={name || ''}
       control={methods.control}
       render={({ field: { value, onChange }, fieldState: { error } }) => (
-        <TextField
-          value={value || ''}
-          error={!!error?.message || false}
-          helperText={error?.message || ' '}
-          onChange={onChange}
-          {...props}
-        />
+        <TextField value={value || ''} error={!!error?.message || false} onChange={onChange} {...props} />
       )}
     />
   );

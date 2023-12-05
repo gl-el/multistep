@@ -35,12 +35,11 @@ export function MaskedInput({ name, ...props }: TextMaskedProps) {
     <Controller
       name={name}
       control={methods.control}
-      render={({ field: { value, onChange } }) => (
+      render={({ field: { value, onChange }, fieldState: { error } }) => (
         <TextField
           {...props}
           value={value}
-          error={!!methods.formState.errors[name]}
-          helperText={methods.formState.errors[name]?.message?.toString() || ' '}
+          error={!!error?.message || false}
           onChange={onChange}
           InputProps={{
             inputComponent: TextMaskCustom as never,
