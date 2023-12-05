@@ -1,7 +1,6 @@
-@use '../../styles/constants';
-
 .wrapper {
   padding: 24px;
+  min-height: 680px;
 
   & > hr {
     margin: 24px 0;
