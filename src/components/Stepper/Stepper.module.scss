@@ -1,4 +1,4 @@
-@use "../../styles/constants";
+@use '../../styles/constants';
 
 .stepper {
   display: flex;
@@ -17,7 +17,6 @@
   }
 }
 
-
 .line {
   position: absolute;
   top: 4px;
@@ -32,7 +31,7 @@
     left: 14px;
     height: 100%;
     border-radius: 0 4px 4px 0;
-    background-color: var(--color-purple-100);;
+    background-color: var(--color-purple-100);
     width: 0%;
     transition: width 0.5s;
   }
@@ -69,7 +68,7 @@
     animation: pulse 1.5s infinite;
 
     &::after {
-      content: "";
+      content: '';
       display: block;
       width: 4px;
       height: 4px;

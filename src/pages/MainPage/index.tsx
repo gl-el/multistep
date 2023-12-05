@@ -1,7 +1,7 @@
 import { Avatar } from '@/components/Avatar';
 import { MaskedInput, TextInput } from '@/components/Form';
 import s from './MainPage.module.scss';
-import { Divider, Button, Grid, InputLabel } from '@mui/material';
+import { Divider, Button, Grid, InputLabel, FormHelperText } from '@mui/material';
 import { useFormContext } from 'react-hook-form';
 import { useAppDispatch } from '@/store/hooks';
 import { setStep } from '@/store/form.slice';
@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 export function MainPage() {
   const navigate = useNavigate();
   const methods = useFormContext();
+  const errors = methods.formState.errors;
   const dispatch = useAppDispatch();
 
   const onSubmit = () => {
@@ -26,10 +27,12 @@ export function MainPage() {
           <Grid container item direction={'column'} md={6} xs={12}>
             <InputLabel htmlFor='user-phone'>Номер телефона</InputLabel>
             <MaskedInput style={{ maxWidth: 400 }} size={'small'} name={'phone'} id={'user-phone'} margin={'dense'} />
+            <FormHelperText>{errors.phone?.message?.toString() || ' '}</FormHelperText>
           </Grid>
           <Grid container item direction={'column'} md={6} xs={12}>
             <InputLabel htmlFor='user-email'>Email</InputLabel>
             <TextInput style={{ maxWidth: 400 }} size={'small'} name={'email'} id={'user-email'} margin={'dense'} />
+            <FormHelperText>{errors.email?.message?.toString() || ' '}</FormHelperText>
           </Grid>
         </Grid>
         <Button variant={'contained'} type={'submit'} size={'large'}>

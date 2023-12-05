@@ -1,13 +1,13 @@
 import { useFormContext } from 'react-hook-form';
-import { TextInput } from '@/components/Form';
+import { FormHelperText, Grid, InputLabel, MenuItem } from '@mui/material';
 import { GENDERS } from '@/types';
-import { Grid, InputLabel, MenuItem } from '@mui/material';
 import { useAppDispatch } from '@/store/hooks';
 import { incrementStep } from '@/store/form.slice';
-import s from './FormSteps.module.scss';
+import { TextInput } from '@/components/Form';
 
 export function FirstForm({ id }: { id: string }) {
   const methods = useFormContext();
+  const errors = methods.formState.errors;
   const dispatch = useAppDispatch();
 
   const onSubmit = () => {
@@ -15,9 +15,9 @@ export function FirstForm({ id }: { id: string }) {
   };
 
   return (
-    <form className={s.form} onSubmit={methods.handleSubmit(onSubmit)} id={id}>
-      <Grid container spacing={2} direction={'column'} marginBlockEnd={2}>
-        <Grid container item direction={'column'} md={6} xs={12}>
+    <form onSubmit={methods.handleSubmit(onSubmit)} id={id}>
+      <Grid container spacing={3} direction={'column'} marginBlockEnd={2}>
+        <Grid container item direction={'column'}>
           <InputLabel htmlFor='field-nickname'>NickName</InputLabel>
           <TextInput
             name={'nickname'}
@@ -25,10 +25,11 @@ export function FirstForm({ id }: { id: string }) {
             id={'field-nickname'}
             placeholder={'Enter nickname'}
             margin={'dense'}
-            style={{ maxWidth: 300 }}
+            sx={{ maxWidth: 300 }}
           />
+          <FormHelperText>{errors.nickname?.message?.toString() || ' '}</FormHelperText>
         </Grid>
-        <Grid container item direction={'column'} md={6} xs={12}>
+        <Grid container item direction={'column'}>
           <InputLabel htmlFor='field-name'>Name</InputLabel>
           <TextInput
             name={'name'}
@@ -36,10 +37,11 @@ export function FirstForm({ id }: { id: string }) {
             id={'field-name'}
             placeholder={'Enter name'}
             margin={'dense'}
-            style={{ maxWidth: 300 }}
+            sx={{ maxWidth: 300 }}
           />
+          <FormHelperText>{errors.name?.message?.toString() || ' '}</FormHelperText>
         </Grid>
-        <Grid container item direction={'column'} md={6} xs={12}>
+        <Grid container item direction={'column'}>
           <InputLabel htmlFor='field-surname'>Surname</InputLabel>
           <TextInput
             name={'surname'}
@@ -47,10 +49,11 @@ export function FirstForm({ id }: { id: string }) {
             id={'field-surname'}
             placeholder={'Enter surname'}
             margin={'dense'}
-            style={{ maxWidth: 300 }}
+            sx={{ maxWidth: 300 }}
           />
+          <FormHelperText>{errors.surname?.message?.toString() || ' '}</FormHelperText>
         </Grid>
-        <Grid container item direction={'column'} md={6} xs={12}>
+        <Grid container item direction={'column'}>
           <InputLabel htmlFor='field-sex'>Sex</InputLabel>
           <TextInput name={'sex'} size={'small'} id={'field-sex'} margin={'dense'} style={{ maxWidth: 300 }} select>
             {GENDERS.map((item, i) => (
@@ -59,6 +62,7 @@ export function FirstForm({ id }: { id: string }) {
               </MenuItem>
             ))}
           </TextInput>
+          <FormHelperText>{`${errors.sex?.message || ' '}`}</FormHelperText>
         </Grid>
       </Grid>
     </form>

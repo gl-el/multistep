@@ -1,6 +1,5 @@
 import { useFormContext } from 'react-hook-form';
 import { TextArea } from '@/components/Form';
-import s from './FormSteps.module.scss';
 
 export function ThirdForm({ id }: { id: string }) {
   const methods = useFormContext();
@@ -22,8 +21,8 @@ export function ThirdForm({ id }: { id: string }) {
   };
 
   return (
-    <form className={s.form} id={id} onSubmit={methods.handleSubmit(onSubmit)}>
-      <div className={s.about}>
+    <form id={id} onSubmit={methods.handleSubmit(onSubmit)}>
+      <div>
         About
         <TextArea rows={3} name='about' id='field-about' max={200} margin={'dense'} fullWidth />
       </div>
