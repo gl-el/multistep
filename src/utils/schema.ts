@@ -2,7 +2,7 @@ import * as yup from 'yup';
 import isEmail from 'validator/lib/isEmail';
 
 const advantageSchema = yup.object().shape({
-  advantage: yup.string().required('Enter your advantage'),
+  advantage: yup.string(),
 });
 
 export const schema = [
@@ -41,7 +41,12 @@ export const schema = [
     sex: yup.string().default('').required('Select your gender'),
   }),
   yup.object({
-    advantages: yup.array().of(advantageSchema).required('Must have fields').min(1, 'Minimum 1 field'),
+    advantages: yup
+      .array()
+      .of(advantageSchema)
+      .test('emptiness', 'No empty fields allowed', (v) => !v?.some((field) => field.advantage?.length === 0))
+      .min(1, 'Minimum one advantage')
+      .required(),
     checkbox: yup.array(yup.number()).min(1, 'Minimum one check').required(),
     radio: yup.number().required('Choose any option'),
   }),
