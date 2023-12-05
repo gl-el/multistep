@@ -21,7 +21,7 @@ export function App() {
     checkbox: [],
     about: '',
   };
-  const methods = useForm({
+  const methods = useForm<FormMain | FormCreateFirst | FormCreateSecond | FormCreateThird>({
     resolver: yupResolver<FormMain | FormCreateFirst | FormCreateSecond | FormCreateThird>(schema[step]),
     defaultValues: defaultValues,
   });

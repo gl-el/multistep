@@ -1,22 +1,25 @@
 import { useFormContext } from 'react-hook-form';
 import { TextArea } from '@/components/Form';
 import { FormHelperText, InputLabel, Stack } from '@mui/material';
+import { FormValues } from '@/types';
 
 export function ThirdForm({ id }: { id: string }) {
-  const methods = useFormContext();
+  const methods = useFormContext<FormValues>();
   const errors = methods.formState.errors;
 
   const onSubmit = async () => {
+    const { phone, advantages, ...rest } = methods.getValues();
+    const formatAdvantages = advantages.map((item) => item.advantage);
+    const formatPhone = phone.replaceAll(/\D+/g, '');
     try {
-      const response = await fetch('https://api.sbercloud.ru/content/v1/bootcamp/frontend', {
+      const res = await fetch('https://api.sbercloud.ru/content/v1/bootcamp/frontend', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json;charset=utf-8',
         },
-        body: JSON.stringify(methods.getValues()),
+        body: JSON.stringify({ formatAdvantages, formatPhone, ...rest }),
       });
-      const result = await response.json();
-      alert(result.message);
+      if (!res.ok) throw new Error('Error occurred during submitting');
     } catch (e) {
       // handle your error
     }

@@ -26,8 +26,15 @@ export function SecondForm({ id }: { id: string }) {
   return (
     <form onSubmit={methods.handleSubmit(onSubmit)} id={id}>
       <InputLabel>Advantages</InputLabel>
-      {fields.map((_, index) => (
-        <Stack key={index} direction={'row'} spacing={1} marginBlockStart={1} marginBlockEnd={2} alignItems={'center'}>
+      {fields.map((field, index) => (
+        <Stack
+          key={field.id}
+          direction={'row'}
+          spacing={1}
+          marginBlockStart={1}
+          marginBlockEnd={2}
+          alignItems={'center'}
+        >
           <TextInput
             fullWidth
             name={`advantages[${index}].advantage`}

@@ -21,3 +21,5 @@ export interface FormCreateSecond {
 export interface FormCreateThird {
   about: string;
 }
+
+export type FormValues = FormMain & FormCreateFirst & FormCreateSecond & FormCreateThird;
