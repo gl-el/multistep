@@ -30,7 +30,7 @@ export function TextArea({ name, rows, max, ...props }: TextAreaProps) {
             }}
             {...props}
           />
-          <p className={s.counter}>{`${value.length}/${max}`}</p>
+          <p className={s.counter}>{`${value.replaceAll(' ', '').length}/${max}`}</p>
         </div>
       )}
     />

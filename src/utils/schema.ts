@@ -2,7 +2,7 @@ import * as yup from 'yup';
 import isEmail from 'validator/lib/isEmail';
 
 const advantageSchema = yup.object().shape({
-  advantage: yup.string(),
+  advantage: yup.string().required(),
 });
 
 export const schema = [
@@ -51,6 +51,10 @@ export const schema = [
     radio: yup.number().required('Choose any option'),
   }),
   yup.object({
-    about: yup.string().min(1, 'Enter about text').max(200, '200 symbols max').required('Enter about text'),
+    about: yup
+      .string()
+      .required('Enter about text')
+      .min(1, 'Enter about text')
+      .test('max symbols', '200 symbols max', (v) => v.replaceAll(' ', '').length <= 200),
   }),
 ];
