@@ -1,8 +1,10 @@
 import { useFormContext } from 'react-hook-form';
 import { TextArea } from '@/components/Form';
+import { FormHelperText, InputLabel, Stack } from '@mui/material';
 
 export function ThirdForm({ id }: { id: string }) {
   const methods = useFormContext();
+  const errors = methods.formState.errors;
 
   const onSubmit = async () => {
     try {
@@ -22,10 +24,11 @@ export function ThirdForm({ id }: { id: string }) {
 
   return (
     <form id={id} onSubmit={methods.handleSubmit(onSubmit)}>
-      <div>
-        About
-        <TextArea rows={3} name='about' id='field-about' max={200} margin={'dense'} fullWidth />
-      </div>
+      <Stack paddingBlockEnd={1}>
+        <InputLabel htmlFor='field-about'>About</InputLabel>
+        <TextArea rows={2} name='about' id='field-about' max={200} margin={'dense'} fullWidth />
+        <FormHelperText>{errors.about?.message?.toString() || ' '}</FormHelperText>
+      </Stack>
     </form>
   );
 }

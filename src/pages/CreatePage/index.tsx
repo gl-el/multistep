@@ -34,7 +34,7 @@ export function CreatePage() {
           Назад
         </Button>
         <Button variant={'contained'} type={'submit'} size={'large'} form={`form-step-${step}`}>
-          Далее
+          {step < 3 ? 'Далее' : 'Отправить'}
         </Button>
       </div>
     </div>
