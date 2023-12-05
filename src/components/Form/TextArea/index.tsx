@@ -16,17 +16,22 @@ export function TextArea({ name, rows, max, ...props }: TextAreaProps) {
       name={name || ''}
       control={methods.control}
       render={({ field: { value, onChange }, fieldState: { error } }) => (
-        <>
+        <div className={s.area}>
           <TextField
             multiline
             rows={rows}
             value={value || ''}
             error={!!error?.message || false}
             onChange={onChange}
+            inputProps={{
+              style: {
+                padding: 0,
+              },
+            }}
             {...props}
           />
           <p className={s.counter}>{`${value.length}/${max}`}</p>
-        </>
+        </div>
       )}
     />
   );
