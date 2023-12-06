@@ -13,10 +13,17 @@ export function Dialog({
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
+    document.body.style.overflow = '';
     if (isOpen && dialogRef.current) {
       dialogRef.current.showModal();
       document.body.style.overflow = 'hidden';
+    } else if (!isOpen && dialogRef.current) {
+      document.body.style.overflow = '';
+      dialogRef.current.close();
     }
+    return () => {
+      document.body.style.overflow = '';
+    };
   }, [isOpen]);
 
   useEffect(() => {
