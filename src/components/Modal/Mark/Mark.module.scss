@@ -1,0 +1,42 @@
+.wrapper {
+  width: 100%;
+  text-align: center;
+  margin: 26px 0;
+}
+
+.icoWrapper {
+  display: inline-block;
+  line-height: 0;
+  border-radius: 50%;
+  border: 16px solid;
+  outline: 10px solid;
+  outline-offset: -26px;
+  animation: pulse 2s infinite;
+}
+
+.icoGreen {
+  border-color: var(--color-green-15);
+  outline-color: var(--color-green-15);
+  color: var(--color-green-15);
+}
+
+.icoRed {
+  border-color: var(--color-red-15);
+  outline-color: var(--color-red-15);
+  color: var(--color-red-15);
+}
+
+@keyframes pulse {
+  from {
+    box-shadow: 0 0 0 0;
+  }
+
+  70% {
+    box-shadow: 0 0 0 10px;
+  }
+
+  to {
+    box-shadow: 0 0 0 0;
+  }
+}
+
