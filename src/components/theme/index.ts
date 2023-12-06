@@ -7,6 +7,9 @@ export const themeOptions = createTheme({
     primary: {
       main: '#5558FA',
     },
+    secondary: {
+      main: 'rgba(0, 0, 0, 0.04)',
+    },
   },
   components: {
     MuiButton: {
@@ -17,6 +20,9 @@ export const themeOptions = createTheme({
         },
         sizeLarge: {
           padding: '10px 14px',
+        },
+        contained: {
+          boxShadow: 'none',
         },
         outlined: {
           '&:hover': {
