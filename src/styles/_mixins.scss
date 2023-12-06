@@ -1,0 +1,7 @@
+@use './constants' as *;
+
+@mixin media-mobile {
+  @media (width < $mobile-width) {
+    @content;
+  }
+}

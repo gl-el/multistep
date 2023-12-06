@@ -64,7 +64,7 @@ export function SecondForm({ id }: { id: string }) {
       <FormHelperText>{errors.advantages?.message?.toString() || ' '}</FormHelperText>
       <div>
         <InputLabel>Checkbox group</InputLabel>
-        <Stack>
+        <Stack gap={{ xs: 1, md: 0 }} marginBlockStart={{ xs: 2, md: 0 }}>
           {Array.from({ length: 3 }, (_, i) => i + 1).map((option, index) => (
             <CheckBox
               key={index}
@@ -79,7 +79,7 @@ export function SecondForm({ id }: { id: string }) {
       </div>
       <div>
         <InputLabel>Radio group</InputLabel>
-        <Stack>
+        <Stack gap={{ xs: 1, md: 0 }} marginBlockStart={{ xs: 2, md: 0 }}>
           {Array.from({ length: 3 }, (_, i) => i + 1).map((option, index) => (
             <RadioBox
               key={index}

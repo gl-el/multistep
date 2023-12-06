@@ -1,13 +1,18 @@
+@use '../../../styles/mixins' as *;
+
 .dialog {
   width: min(460px, 90%);
   margin: auto;
   border: none !important;
   outline: none !important;
   border-radius: 12px;
-  
 }
 
 .wrapper {
   padding: 32px;
   position: relative;
+
+  @include media-mobile {
+    padding: 15px;
+  }
 }

@@ -1,8 +1,13 @@
 @use '../../styles/constants';
+@use '../../styles/mixins' as *;
 
 .main {
   margin: 24px auto;
-  max-width: 900px;
+  max-width: min(900px, 90%);
   border-radius: 12px;
   background-color: var(--color-grey-white-100);
+
+  @include media-mobile {
+    margin: 10px auto;
+  }
 }

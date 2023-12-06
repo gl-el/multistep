@@ -1,4 +1,4 @@
-import { Button } from '@mui/material';
+import { Button, Stack } from '@mui/material';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { decrementStep, resetStep } from '@/store/form.slice';
 import { useNavigate } from 'react-router';
@@ -29,14 +29,14 @@ export function CreatePage() {
       {step === 1 && <FirstForm id={`form-step-${step}`} />}
       {step === 2 && <SecondForm id={`form-step-${step}`} />}
       {step === 3 && <ThirdForm id={`form-step-${step}`} />}
-      <div className={s.btnWrapper}>
+      <Stack direction={'row'} justifyContent={'space-between'} marginBlockStart={{ xs: 0, md: 8 }}>
         <Button variant={'outlined'} size={'large'} onClick={handleBack}>
           Назад
         </Button>
         <Button variant={'contained'} type={'submit'} size={'large'} form={`form-step-${step}`}>
           {step < 3 ? 'Далее' : 'Отправить'}
         </Button>
-      </div>
+      </Stack>
     </div>
   );
 }

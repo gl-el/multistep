@@ -1,7 +1,13 @@
+@use '../../../styles/mixins' as *;
+
 .wrapper {
   width: 100%;
   text-align: center;
   margin: 26px 0;
+
+  @include media-mobile {
+    margin: 20px 0;
+  }
 }
 
 .icoWrapper {
@@ -39,4 +45,3 @@
     box-shadow: 0 0 0 0;
   }
 }
-

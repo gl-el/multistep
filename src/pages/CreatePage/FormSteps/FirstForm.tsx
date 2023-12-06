@@ -16,7 +16,7 @@ export function FirstForm({ id }: { id: string }) {
 
   return (
     <form onSubmit={methods.handleSubmit(onSubmit)} id={id}>
-      <Grid container spacing={3} direction={'column'} marginBlockEnd={2}>
+      <Grid container spacing={{ xs: 1, md: 3 }} direction={'column'} marginBlockEnd={2}>
         <Grid container item direction={'column'}>
           <InputLabel htmlFor='field-nickname'>NickName</InputLabel>
           <TextInput
