@@ -1,7 +1,5 @@
-import { TextInput } from './TextInput';
-import { MaskedInput } from './MaskedInput';
-import { TextArea } from './TextArea';
-import { CheckBox } from './CheckBox';
-import { RadioBox } from './RadioBox';
-
-export { TextInput, MaskedInput, TextArea, CheckBox, RadioBox };
+export * from './TextInput';
+export * from './MaskedInput';
+export * from './TextArea';
+export * from './CheckBox';
+export * from './RadioBox';

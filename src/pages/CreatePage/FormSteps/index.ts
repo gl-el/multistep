@@ -1,5 +1,3 @@
-import { FirstForm } from './FirstForm';
-import { SecondForm } from './SecondForm';
-import { ThirdForm } from './ThirdForm';
-
-export { FirstForm, SecondForm, ThirdForm };
+export * from './FirstForm';
+export * from './SecondForm';
+export * from './ThirdForm';
