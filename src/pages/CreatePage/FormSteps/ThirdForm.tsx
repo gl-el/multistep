@@ -1,11 +1,11 @@
 import { useFormContext } from 'react-hook-form';
 import { TextArea } from '@/components/Form';
-import { Button, FormHelperText, InputLabel, Stack, Typography } from '@mui/material';
+import { FormHelperText, InputLabel, Stack } from '@mui/material';
 import { FormValues } from '@/types';
-import { Dialog, Mark } from '@/components/Modal';
+import { ModalError, ModalSuccess } from '@/components/Modal';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import CloseIco from '@/assets/icos/close.svg?react';
+
 import { useFormSubmit } from '@/hooks/useFormSubmit';
 
 export function ThirdForm({ id }: { id: string }) {
@@ -39,57 +39,15 @@ export function ThirdForm({ id }: { id: string }) {
         </Stack>
       </form>
       {submitStatus === 'success' ? (
-        <Dialog
+        <ModalSuccess
           isOpen={isDialogOpen}
-          onClose={() => {
+          handleClick={() => {
             navigate('/');
             setIsDialogOpen(false);
           }}
-        >
-          <Stack alignItems={'center'} gap={3}>
-            <Typography variant='h6' component={'p'}>
-              Форма успешно отправлена
-            </Typography>
-            <Mark status='success' />
-            <Button
-              variant={'contained'}
-              size={'large'}
-              onClick={() => {
-                navigate('/');
-                setIsDialogOpen(false);
-              }}
-            >
-              На главную
-            </Button>
-          </Stack>
-        </Dialog>
+        />
       ) : (
-        <Dialog isOpen={isDialogOpen} onClose={() => setIsDialogOpen(false)}>
-          <Stack alignItems={'center'} gap={3}>
-            <Stack alignItems={'center'} justifyContent={'space-between'} direction={'row'} width={'100%'}>
-              <Typography variant='h6' component={'p'}>
-                Ошибка
-              </Typography>
-              <Button
-                variant={'contained'}
-                size={'small'}
-                color={'secondary'}
-                onClick={() => setIsDialogOpen(false)}
-                sx={{
-                  minWidth: '28px',
-                  padding: '4px',
-                  borderRadius: '50%',
-                }}
-              >
-                <CloseIco />
-              </Button>
-            </Stack>
-            <Mark status='error' />
-            <Button variant={'contained'} size={'large'} onClick={() => setIsDialogOpen(false)}>
-              Закрыть
-            </Button>
-          </Stack>
-        </Dialog>
+        <ModalError isOpen={isDialogOpen} handleClick={() => setIsDialogOpen(false)} />
       )}
     </>
   );
