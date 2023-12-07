@@ -16,11 +16,11 @@ module.exports = {
     sourceType: 'module',
     project: './tsconfig.json',
   },
-  plugins: ['@typescript-eslint', 'react', 'prettier', 'react-hooks'],
+  plugins: ['@typescript-eslint', 'react', 'prettier', 'react-hooks', 'perfectionist'],
   settings: {
     react: {
-      pragma: "React",
-      version: "detect"
+      pragma: 'React',
+      version: 'detect'
     }
   },
   rules: {
@@ -39,6 +39,41 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 'error',
     '@typescript-eslint/no-var-requires': 'off',
     'react/jsx-uses-react': 'off',
-    'react/react-in-jsx-scope': 'off'
-  },
+    'react/react-in-jsx-scope': 'off',
+    'perfectionist/sort-exports': ['error'],
+    'perfectionist/sort-named-exports': ['error'],
+    'perfectionist/sort-named-imports': ['error'],
+    'perfectionist/sort-imports': [
+      'error',
+      {
+        'type': 'natural',
+        'order': 'asc',
+        'groups': [
+          'type',
+          ['builtin', 'external'],
+          'internal-type',
+          'internal',
+          ['parent-type', 'sibling-type', 'index-type'],
+          ['parent', 'sibling', 'index'],
+          'object',
+          'unknown',
+        ],
+        'custom-groups': {
+          'value': {
+            'react': ['react', 'react-*'],
+          },
+          'type': {
+            'react': 'react'
+          }
+        },
+        'newlines-between': 'always',
+        'internal-pattern': [
+          '@/components/**',
+          '@/store/**',
+          '@/pages/**',
+        ]
+      }
+    ],
+  }
 }
+
