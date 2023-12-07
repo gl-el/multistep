@@ -6,38 +6,32 @@ import { Dialog, Mark } from '@/components/Modal';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CloseIco from '@/assets/icos/close.svg?react';
+import { useFormSubmit } from '@/hooks/useFormSubmit';
 
 export function ThirdForm({ id }: { id: string }) {
   const methods = useFormContext<FormValues>();
   const errors = methods.formState.errors;
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'success' | 'error'>('success');
   const navigate = useNavigate();
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-  const onSubmit = async () => {
+  const { submitStatus, onSubmit } = useFormSubmit(() => setIsDialogOpen(true));
+
+  const prepareFormData = () => {
     const { phone, advantages, ...rest } = methods.getValues();
     const formatAdvantages = advantages.map((item) => item.advantage);
     const formatPhone = phone.replaceAll(/\D+/g, '');
-    try {
-      const res = await fetch('https://api.sbercloud.ru/content/v1/bootcamp/frontend', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json;charset=utf-8',
-        },
-        body: JSON.stringify({ advantages: formatAdvantages, phone: formatPhone, ...rest }),
-      });
-      if (!res.ok) throw new Error('Error occurred during submitting');
-      setSubmitStatus('success');
-    } catch (e) {
-      setSubmitStatus('error');
-    } finally {
-      setIsDialogOpen(true);
-    }
+    return { advantages: formatAdvantages, phone: formatPhone, ...rest };
   };
 
   return (
     <>
-      <form id={id} onSubmit={methods.handleSubmit(onSubmit)}>
+      <form
+        id={id}
+        onSubmit={methods.handleSubmit(() => {
+          const data = prepareFormData();
+          onSubmit(data);
+        })}
+      >
         <Stack paddingBlockEnd={1}>
           <InputLabel htmlFor='field-about'>About</InputLabel>
           <TextArea rows={2} name='about' id='field-about' max={200} margin={'dense'} fullWidth />
