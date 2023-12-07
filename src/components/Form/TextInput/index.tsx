@@ -1,5 +1,5 @@
 import { TextField, TextFieldProps } from '@mui/material';
-import { useFormContext, Controller } from 'react-hook-form';
+import { Controller, useFormContext } from 'react-hook-form';
 
 interface TextInputProps extends Omit<TextFieldProps, 'name'> {
   name: string;

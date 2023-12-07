@@ -1,6 +1,7 @@
-import { Stack, Typography, Button } from '@mui/material';
-import { Dialog, Mark } from '.';
 import CloseIco from '@/assets/icos/close.svg?react';
+import { Button, Stack, Typography } from '@mui/material';
+
+import { Dialog, Mark } from '.';
 
 export function ModalError({ isOpen, handleClick }: { isOpen: boolean; handleClick: () => void }) {
   return (

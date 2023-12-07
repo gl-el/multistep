@@ -1,9 +1,10 @@
-import { useFormContext } from 'react-hook-form';
-import { FormHelperText, Grid, InputLabel, MenuItem } from '@mui/material';
 import { GENDERS } from '@/types';
-import { useAppDispatch } from '@/store/hooks';
-import { incrementStep } from '@/store/form.slice';
+import { FormHelperText, Grid, InputLabel, MenuItem } from '@mui/material';
+import { useFormContext } from 'react-hook-form';
+
 import { TextInput } from '@/components/Form';
+import { incrementStep } from '@/store/form.slice';
+import { useAppDispatch } from '@/store/hooks';
 
 export function FirstForm({ id }: { id: string }) {
   const methods = useFormContext();

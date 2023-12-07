@@ -1,12 +1,13 @@
-import { useFormContext, useFieldArray } from 'react-hook-form';
+import IcoAdd from '@/assets/icos/add.svg?react';
+import IcoDelete from '@/assets/icos/delete.svg?react';
 import { Button, FormHelperText, InputLabel, Stack } from '@mui/material';
-import { useAppDispatch } from '@/store/hooks';
-import { incrementStep } from '@/store/form.slice';
+import { useFieldArray, useFormContext } from 'react-hook-form';
+
 import { TextInput } from '@/components/Form';
 import { CheckBox } from '@/components/Form';
 import { RadioBox } from '@/components/Form';
-import IcoDelete from '@/assets/icos/delete.svg?react';
-import IcoAdd from '@/assets/icos/add.svg?react';
+import { incrementStep } from '@/store/form.slice';
+import { useAppDispatch } from '@/store/hooks';
 
 export function SecondForm({ id }: { id: string }) {
   const methods = useFormContext();

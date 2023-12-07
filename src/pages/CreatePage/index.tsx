@@ -1,11 +1,12 @@
 import { Button, Stack } from '@mui/material';
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { decrementStep, resetStep } from '@/store/form.slice';
 import { useNavigate } from 'react-router';
-import { FirstForm, SecondForm, ThirdForm } from './FormSteps';
+
+import { Stepper } from '@/components/Stepper';
+import { decrementStep, resetStep } from '@/store/form.slice';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
 
 import s from './CreatePage.module.scss';
-import { Stepper } from '@/components/Stepper';
+import { FirstForm, SecondForm, ThirdForm } from './FormSteps';
 
 const MAX_STEPS = 3;
 

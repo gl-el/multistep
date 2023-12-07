@@ -1,5 +1,6 @@
-import { ButtonBack } from '@/components/ButtonBack';
 import { Stack, Typography } from '@mui/material';
+
+import { ButtonBack } from '@/components/ButtonBack';
 
 export function ErrorPage() {
   return (

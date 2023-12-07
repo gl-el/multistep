@@ -1,4 +1,5 @@
 import cx from 'clsx';
+
 import s from './Stepper.module.scss';
 
 interface StepperProps {

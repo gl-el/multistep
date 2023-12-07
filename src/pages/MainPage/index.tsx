@@ -1,11 +1,13 @@
+import { Button, Divider, FormHelperText, Grid, InputLabel } from '@mui/material';
+import { useFormContext } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+
 import { Avatar } from '@/components/Avatar';
 import { MaskedInput, TextInput } from '@/components/Form';
-import s from './MainPage.module.scss';
-import { Divider, Button, Grid, InputLabel, FormHelperText } from '@mui/material';
-import { useFormContext } from 'react-hook-form';
-import { useAppDispatch } from '@/store/hooks';
 import { setStep } from '@/store/form.slice';
-import { useNavigate } from 'react-router-dom';
+import { useAppDispatch } from '@/store/hooks';
+
+import s from './MainPage.module.scss';
 
 export function MainPage() {
   const navigate = useNavigate();

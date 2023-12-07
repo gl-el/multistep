@@ -1,12 +1,13 @@
-import { BrowserRouter } from 'react-router-dom';
-import { FormProvider, useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { useAppSelector } from './store/hooks';
+import { FormCreateFirst, FormCreateSecond, FormCreateThird, FormMain } from '@/types';
 import { schema } from '@/utils/schema';
-import { AppRouter } from '@/components/routing';
-import { FormMain, FormCreateFirst, FormCreateSecond, FormCreateThird } from './types';
 import { ThemeProvider } from '@emotion/react';
-import { themeOptions } from './components/theme';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { FormProvider, useForm } from 'react-hook-form';
+import { BrowserRouter } from 'react-router-dom';
+
+import { AppRouter } from '@/components/routing';
+import { themeOptions } from '@/components/theme';
+import { useAppSelector } from '@/store/hooks';
 
 export function App() {
   const { step } = useAppSelector((state) => state.form);

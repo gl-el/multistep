@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+
 import s from './Dialog.module.scss';
 
 export function Dialog({

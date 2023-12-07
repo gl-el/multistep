@@ -1,5 +1,5 @@
-import * as yup from 'yup';
 import isEmail from 'validator/lib/isEmail';
+import * as yup from 'yup';
 
 const advantageSchema = yup.object().shape({
   advantage: yup.string().required(),

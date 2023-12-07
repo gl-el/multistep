@@ -1,5 +1,6 @@
 import { TextField, TextFieldProps } from '@mui/material';
-import { useFormContext, Controller } from 'react-hook-form';
+import { Controller, useFormContext } from 'react-hook-form';
+
 import s from './TextArea.module.scss';
 
 interface TextAreaProps extends Omit<TextFieldProps, 'name'> {

@@ -1,7 +1,9 @@
-import { Route, Routes } from 'react-router-dom';
-import { PrivateRoute } from './PrivateRoute';
-import { RootLayout } from '@/components/layouts/RootLayout';
 import { CreatePage, ErrorPage, MainPage } from '@/pages';
+import { Route, Routes } from 'react-router-dom';
+
+import { RootLayout } from '@/components/layouts/RootLayout';
+
+import { PrivateRoute } from './PrivateRoute';
 
 export function AppRouter() {
   return (

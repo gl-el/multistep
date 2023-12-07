@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
-import { useNavigate, Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
+
 import { useAppSelector } from '@/store/hooks';
 
 export function PrivateRoute({ children }: { children: JSX.Element }) {

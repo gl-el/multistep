@@ -1,4 +1,5 @@
-import { Stack, Typography, Button } from '@mui/material';
+import { Button, Stack, Typography } from '@mui/material';
+
 import { Dialog, Mark } from '.';
 
 export function ModalSuccess({ isOpen, handleClick }: { isOpen: boolean; handleClick: () => void }) {
