@@ -68,9 +68,14 @@ module.exports = {
         },
         'newlines-between': 'always',
         'internal-pattern': [
+          '@/types/**',
           '@/components/**',
           '@/store/**',
           '@/pages/**',
+          '@/providers/**',
+          '@/hooks/**',
+          '@/theme/**',
+          '@/utils/**',
         ]
       }
     ],

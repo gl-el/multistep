@@ -22,7 +22,7 @@ export const formSlice = createSlice({
       state.step = action.payload;
     },
     resetStep: (state) => {
-      state.step = 0;
+      state.step = initialState.step;
     },
   },
 });

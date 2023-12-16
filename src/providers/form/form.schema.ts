@@ -1,6 +1,8 @@
 import isEmail from 'validator/lib/isEmail';
 import * as yup from 'yup';
 
+import { NAME_REGEX, NICKNAME_REGEX } from '@/utils/validation';
+
 const advantageSchema = yup.object().shape({
   advantage: yup.string().required(),
 });
@@ -25,19 +27,19 @@ export const schema = [
       .default('')
       .required('Enter your nickname')
       .max(30, '30 characters maximum')
-      .matches(/^[a-zA-Zа-яА-Я0-9]+$/, 'Only letters and digits'),
+      .matches(NICKNAME_REGEX, 'Only letters and digits'),
     name: yup
       .string()
       .default('')
       .required('Enter your name')
       .max(50, '50 characters maximum')
-      .matches(/^[a-zA-Zа-яА-Я]+$/, 'Only letters'),
+      .matches(NAME_REGEX, 'Only letters'),
     surname: yup
       .string()
       .default('')
       .required('Enter your surname')
       .max(50, '50 characters maximum')
-      .matches(/^[a-zA-Zа-яА-Я]+$/, 'Only letters'),
+      .matches(NAME_REGEX, 'Only letters'),
     sex: yup.string().default('').required('Select your gender'),
   }),
   yup.object({

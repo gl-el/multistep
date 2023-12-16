@@ -1,5 +1,5 @@
 import { Checkbox, FormControlLabel } from '@mui/material';
-import { Controller, useFormContext } from 'react-hook-form';
+import { Controller, ControllerRenderProps, FieldValues, useFormContext } from 'react-hook-form';
 
 interface CheckBoxProps {
   name: string;
@@ -11,6 +11,15 @@ interface CheckBoxProps {
 export function CheckBox({ name, label, id, value }: CheckBoxProps) {
   const methods = useFormContext();
 
+  const handleOnChange = (field: ControllerRenderProps<FieldValues, string>) => {
+    if (!field.value.includes(value)) {
+      field.onChange([...field.value, value]);
+      return;
+    }
+    const newOption = field.value.filter((item: unknown) => item !== value);
+    field.onChange(newOption);
+  };
+
   return (
     <Controller
       name={name}
@@ -20,20 +29,7 @@ export function CheckBox({ name, label, id, value }: CheckBoxProps) {
           {...field}
           label={label}
           sx={{ gap: 1 }}
-          control={
-            <Checkbox
-              id={id}
-              checked={field.value.includes(value)}
-              onChange={() => {
-                if (!field.value.includes(value)) {
-                  field.onChange([...field.value, value]);
-                  return;
-                }
-                const newOption = field.value.filter((item: unknown) => item !== value);
-                field.onChange(newOption);
-              }}
-            />
-          }
+          control={<Checkbox id={id} checked={field.value.includes(value)} onChange={() => handleOnChange(field)} />}
         />
       )}
     />
