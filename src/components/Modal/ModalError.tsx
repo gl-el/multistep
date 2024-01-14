@@ -1,4 +1,4 @@
-import CloseIco from '@/assets/icos/close.svg?react';
+import CloseIcon from '@/assets/icons/close.svg?react';
 import { Button, Stack, Typography } from '@mui/material';
 
 import { Dialog, Mark } from '.';
@@ -22,7 +22,7 @@ export function ModalError({ isOpen, handleClick }: { isOpen: boolean; handleCli
               borderRadius: '50%',
             }}
           >
-            <CloseIco />
+            <CloseIcon />
           </Button>
         </Stack>
         <Mark status='error' />

@@ -1,26 +1,26 @@
-import s from './Avatar.module.scss';
+import styles from './Avatar.module.scss';
 
 export function Avatar() {
   return (
-    <div className={s.wrapper}>
-      <div className={s.avatar} role='image'>
-        АИ
+    <div className={styles.wrapper}>
+      <div className={styles.avatar} role='image'>
+        ИИ
       </div>
-      <div className={s.data}>
-        <h3 className={s.name}>Иван Иванов</h3>
-        <ul className={s.linksList}>
-          <li className={s.linkItem}>
-            <a href='#' target='_blank' className={s.link}>
+      <div className={styles.data}>
+        <h3 className={styles.name}>Иван Иванов</h3>
+        <ul className={styles.linksList}>
+          <li className={styles.linkItem}>
+            <a href='#' target='_blank' className={styles.link}>
               Telegram
             </a>
           </li>
-          <li className={s.linkItem}>
-            <a href='#' target='_blank' className={s.link}>
+          <li className={styles.linkItem}>
+            <a href='#' target='_blank' className={styles.link}>
               Github
             </a>
           </li>
-          <li className={s.linkItem}>
-            <a href='#' target='_blank' className={s.link} rel='noreferrer'>
+          <li className={styles.linkItem}>
+            <a href='#' target='_blank' className={styles.link} rel='noreferrer'>
               Resume
             </a>
           </li>

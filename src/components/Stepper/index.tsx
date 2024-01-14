@@ -1,6 +1,6 @@
 import cx from 'clsx';
 
-import s from './Stepper.module.scss';
+import styles from './Stepper.module.scss';
 
 interface StepperProps {
   min?: number;
@@ -13,14 +13,17 @@ export function Stepper({ min = 1, max, current, className }: StepperProps) {
   const range = max - min;
   const stepMarks = Array.from({ length: range + 1 }, (_, i) => i + min);
   return (
-    <div className={cx(s.stepper, className)}>
+    <div className={cx(styles.stepper, className)}>
       {stepMarks.map((mark) => (
-        <div key={mark} className={cx(s.mark, [mark === current && s.active], [mark < current && s.done])}>
-          <div className={s.label}>
-            <span className={s.ico}></span>
-            <span className={s.text}>{mark}</span>
+        <div
+          key={mark}
+          className={cx(styles.mark, [mark === current && styles.active], [mark < current && styles.done])}
+        >
+          <div className={styles.label}>
+            <span className={styles.ico}></span>
+            <span className={styles.text}>{mark}</span>
           </div>
-          <div className={s.line} />
+          <div className={styles.line} />
         </div>
       ))}
     </div>

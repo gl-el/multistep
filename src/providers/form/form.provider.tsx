@@ -6,19 +6,19 @@ import { useAppSelector } from '@/store/hooks';
 
 import { schema } from './form.schema';
 
+const defaultValues = {
+  phone: '',
+  email: '',
+  nickname: '',
+  name: '',
+  surname: '',
+  sex: '',
+  advantages: [{ advantage: '' }, { advantage: '' }, { advantage: '' }],
+  checkbox: [],
+  about: '',
+};
 export function FormProvider({ children }: { children: React.ReactNode }) {
   const { step } = useAppSelector((state) => state.form);
-  const defaultValues = {
-    phone: '',
-    email: '',
-    nickname: '',
-    name: '',
-    surname: '',
-    sex: '',
-    advantages: [{ advantage: '' }, { advantage: '' }, { advantage: '' }],
-    checkbox: [],
-    about: '',
-  };
   const methods = useForm<FormMain | FormCreateFirst | FormCreateSecond | FormCreateThird>({
     resolver: yupResolver<FormMain | FormCreateFirst | FormCreateSecond | FormCreateThird>(schema[step]),
     defaultValues: defaultValues,

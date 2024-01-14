@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-import s from './Dialog.module.scss';
+import styles from './Dialog.module.scss';
 
 export function Dialog({
   children,
@@ -53,8 +53,8 @@ export function Dialog({
   }, [onClose]);
 
   return (
-    <dialog ref={dialogRef} className={s.dialog}>
-      <div className={s.wrapper}>{children}</div>
+    <dialog ref={dialogRef} className={styles.dialog}>
+      <div className={styles.wrapper}>{children}</div>
     </dialog>
   );
 }

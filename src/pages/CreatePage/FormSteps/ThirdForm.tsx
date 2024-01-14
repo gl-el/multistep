@@ -1,23 +1,29 @@
 import { FormValues } from '@/types';
-import { FormHelperText, InputLabel, Stack } from '@mui/material';
 import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
-import { TextArea } from '@/components/Form';
+import { AboutField } from '@/components/Form/Fields';
 import { ModalError, ModalSuccess } from '@/components/Modal';
 import { useFormSubmit } from '@/hooks/useFormSubmit';
+import { resetStep } from '@/store/form.slice.ts';
+import { useAppDispatch } from '@/store/hooks.ts';
 
 export function ThirdForm({ id }: { id: string }) {
-  const methods = useFormContext<FormValues>();
-  const errors = methods.formState.errors;
+  const {
+    handleSubmit,
+    formState: { errors },
+    getValues,
+    reset,
+  } = useFormContext<FormValues>();
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const { submitStatus, onSubmit } = useFormSubmit(() => setIsDialogOpen(true));
 
   const prepareFormData = () => {
-    const { phone, advantages, ...rest } = methods.getValues();
+    const { phone, advantages, ...rest } = getValues();
     const formatAdvantages = advantages.map((item) => item.advantage);
     const formatPhone = phone.replaceAll(/\D+/g, '');
     return { advantages: formatAdvantages, phone: formatPhone, ...rest };
@@ -27,16 +33,12 @@ export function ThirdForm({ id }: { id: string }) {
     <>
       <form
         id={id}
-        onSubmit={methods.handleSubmit(() => {
+        onSubmit={handleSubmit(() => {
           const data = prepareFormData();
           onSubmit(data);
         })}
       >
-        <Stack paddingBlockEnd={1}>
-          <InputLabel htmlFor='field-about'>About</InputLabel>
-          <TextArea rows={2} name='about' id='field-about' max={200} margin={'dense'} fullWidth />
-          <FormHelperText>{errors.about?.message?.toString() || ' '}</FormHelperText>
-        </Stack>
+        <AboutField errorMessage={errors.about?.message?.toString()} />
       </form>
       {submitStatus === 'success' ? (
         <ModalSuccess
@@ -44,6 +46,8 @@ export function ThirdForm({ id }: { id: string }) {
           handleClick={() => {
             navigate('/');
             setIsDialogOpen(false);
+            reset({}, { keepDefaultValues: true });
+            dispatch(resetStep());
           }}
         />
       ) : (

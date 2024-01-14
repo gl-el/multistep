@@ -1,9 +1,9 @@
-import { Button, Divider, FormHelperText, Grid, InputLabel } from '@mui/material';
+import { Button, Divider, Grid } from '@mui/material';
 import { useFormContext } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
 import { Avatar } from '@/components/Avatar';
-import { MaskedInput, TextInput } from '@/components/Form';
+import { EmailField, PhoneNumberField } from '@/components/Form/Fields';
 import { setStep } from '@/store/form.slice';
 import { useAppDispatch } from '@/store/hooks';
 
@@ -11,8 +11,10 @@ import s from './MainPage.module.scss';
 
 export function MainPage() {
   const navigate = useNavigate();
-  const methods = useFormContext();
-  const errors = methods.formState.errors;
+  const {
+    handleSubmit,
+    formState: { errors },
+  } = useFormContext();
   const dispatch = useAppDispatch();
 
   const onSubmit = () => {
@@ -24,18 +26,10 @@ export function MainPage() {
     <div className={s.wrapper}>
       <Avatar />
       <Divider />
-      <form className={s.form} onSubmit={methods.handleSubmit(onSubmit)}>
+      <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
         <Grid container spacing={3} direction={'column'} marginBlockEnd={2}>
-          <Grid container item direction={'column'} md={6} xs={12}>
-            <InputLabel htmlFor='user-phone'>Номер телефона</InputLabel>
-            <MaskedInput style={{ maxWidth: 400 }} size={'small'} name={'phone'} id={'user-phone'} margin={'dense'} />
-            <FormHelperText>{errors.phone?.message?.toString() || ' '}</FormHelperText>
-          </Grid>
-          <Grid container item direction={'column'} md={6} xs={12}>
-            <InputLabel htmlFor='user-email'>Email</InputLabel>
-            <TextInput style={{ maxWidth: 400 }} size={'small'} name={'email'} id={'user-email'} margin={'dense'} />
-            <FormHelperText>{errors.email?.message?.toString() || ' '}</FormHelperText>
-          </Grid>
+          <PhoneNumberField errorMessage={errors.phone?.message?.toString()} />
+          <EmailField errorMessage={errors.email?.message?.toString()} />
         </Grid>
         <Button variant={'contained'} type={'submit'} size={'large'}>
           Начать

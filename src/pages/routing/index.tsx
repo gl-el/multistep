@@ -8,7 +8,7 @@ import { PrivateRoute } from './PrivateRoute';
 
 const MainPage = lazy(() => import('@/pages/MainPage').then((module) => ({ default: module.MainPage })));
 const CreatePage = lazy(() => import('@/pages/CreatePage').then((module) => ({ default: module.CreatePage })));
-const ErrorPage = lazy(() => import('@/pages/CreatePage').then((module) => ({ default: module.CreatePage })));
+const ErrorPage = lazy(() => import('@/pages/ErrorPage').then((module) => ({ default: module.ErrorPage })));
 
 export function AppRouter() {
   return (
